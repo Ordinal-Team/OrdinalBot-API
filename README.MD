@@ -23,3 +23,8 @@ L'API est assez similaire à spigot, dans un premier temps il faut faire un plug
 et votre class "Main" (celle indiquée dans le plugin.json) doit hériter de Plugin
 
 ensuite il ne vous reste qu'à appeler le onEnable et a register vos commands / JDA listener
+
+Cette API est basée sur :
+
+[Hermes](https://github.com/HermesBotApp/hermes-api/) <br>
+[Spigot](https://github.com/SpigotMC/Spigot-API)
