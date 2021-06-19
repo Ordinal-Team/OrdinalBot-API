@@ -1,0 +1,16 @@
+fr/ordinalteam/bot/api/bots/IJDAListenerManager.java
+ fr.ordinalteam.bot.api.bots.IJDAListenerManager
+fr/ordinalteam/bot/api/exception/InvalidPlugin.java
+ fr.ordinalteam.bot.api.exception.InvalidPlugin
+fr/ordinalteam/bot/api/plugin/PluginDescriptor.java
+ fr.ordinalteam.bot.api.plugin.PluginDescriptor
+fr/ordinalteam/bot/api/plugin/PluginLoader.java
+ fr.ordinalteam.bot.api.plugin.PluginLoader
+fr/ordinalteam/bot/api/plugin/Plugin.java
+ fr.ordinalteam.bot.api.plugin.Plugin
+fr/ordinalteam/bot/api/commands/ICommandRegistry.java
+ fr.ordinalteam.bot.api.commands.ICommandRegistry
+fr/ordinalteam/bot/api/Ordinal.java
+ fr.ordinalteam.bot.api.Ordinal
+fr/ordinalteam/bot/api/commands/Command.java
+ fr.ordinalteam.bot.api.commands.Command
