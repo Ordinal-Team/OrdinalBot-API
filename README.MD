@@ -3,7 +3,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Ordinal-Team/Terminal/graphs/commit-activity)
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](paypal.me/ArinoniaDev)
 <br>
-#OrdinalBot-API
+**OrdinalBot-API**
 
     Cette api vous permet de créer votre propre module sur l'OrdinalBot
 
