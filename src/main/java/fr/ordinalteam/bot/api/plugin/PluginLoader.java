@@ -29,7 +29,7 @@ public class PluginLoader {
      * Only for implementation of API
      */
     public PluginLoader() {
-        PluginLoader.instance = instance;
+        PluginLoader.instance = this;
         final File pluginFolder = new File("plugins");
         if (!pluginFolder.exists()) {
             if (pluginFolder.mkdir()) {
