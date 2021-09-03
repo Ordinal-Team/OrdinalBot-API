@@ -20,6 +20,7 @@ import java.util.jar.JarFile;
  * Create by Arinonia 18/06/2021
  */
 public class PluginLoader {
+    private static PluginLoader instance;
 
     private Plugin plugin;
     private final List<Plugin> plugins = new ArrayList<>();
@@ -28,6 +29,7 @@ public class PluginLoader {
      * Only for implementation of API
      */
     public PluginLoader() {
+        PluginLoader.instance = instance;
         final File pluginFolder = new File("plugins");
         if (!pluginFolder.exists()) {
             if (pluginFolder.mkdir()) {
@@ -112,5 +114,9 @@ public class PluginLoader {
 
     public List<Plugin> getPlugins() {
         return this.plugins;
+    }
+
+    public static PluginLoader getInstance() {
+        return instance;
     }
 }
