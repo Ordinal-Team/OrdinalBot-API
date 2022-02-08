@@ -64,4 +64,8 @@ public class RoleUtil {
 
         return roles;
     }
+
+    public static boolean isBooster(final Member member) {
+        return member.getRoles().contains(member.getGuild().getRoleById(BOOSTER));
+    }
 }
