@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+group 'fr.ordinalteam'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+configurations {
+    shade
+    implementation.extendsFrom shade
+}
+shadowJar {
+    configurations = [project.configurations.shade]
+}
+dependencies {
+    shade("net.dv8tion:JDA:5.0.0-alpha.5") {
+        exclude module: 'opus-java'
+    }
+    //shade 'org.slf4j:slf4j-log4j13:1.0.1'
+    shade 'com.google.code.gson:gson:2.8.9'
+}
+
