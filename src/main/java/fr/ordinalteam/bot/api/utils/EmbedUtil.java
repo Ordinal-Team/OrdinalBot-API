@@ -10,7 +10,7 @@ import java.awt.*;
  **/
 public class EmbedUtil {
 
-    public EmbedBuilder buildEmbed(final EmbedEnum type, final String title, final String description, final String footer) {
+    public static EmbedBuilder buildEmbed(final EmbedEnum type, final String title, final String description, final String footer) {
         final EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle(title);
         builder.setDescription(description);
@@ -19,11 +19,11 @@ public class EmbedUtil {
         return builder;
     }
 
-    public EmbedBuilder buildEmbed(final EmbedEnum type, final String title, final String description) {
+    public static EmbedBuilder buildEmbed(final EmbedEnum type, final String title, final String description) {
         return buildEmbed(type, title, description, References.ORDINAL_FOOTER);
     }
 
-    public EmbedBuilder buildEmbed(final EmbedEnum type, final String description) {
+    public static EmbedBuilder buildEmbed(final EmbedEnum type, final String description) {
         return buildEmbed(type, type.name(), description, References.ORDINAL_FOOTER);
     }
 
