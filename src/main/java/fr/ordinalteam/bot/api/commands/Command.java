@@ -8,6 +8,13 @@ public abstract class Command {
     protected final String name;
     protected final String description;
     protected final char prefix = '!';
+    protected final String[] alias;
+
+    public Command(final String name, final String description, final String[] alias) {
+        this.name = name;
+        this.description = description;
+        this.alias = alias;
+    }
 
     /**
      *
@@ -17,6 +24,7 @@ public abstract class Command {
     public Command(final String name, final String description) {
         this.name = name;
         this.description = description;
+        this.alias = new String[]{};
     }
 
     /**
@@ -38,15 +46,31 @@ public abstract class Command {
         return this.prefix;
     }
 
+    public String[] getAlias() {
+        return this.alias;
+    }
+
     /**
      *
-     * @return if the command is only for the Owner
+     * @return true if the command is only for the Owner
      */
     public boolean isOpCommand() {
         return false;
     }
 
+    /**
+     *
+     * @return true if the command is a staff command (moderator + owner)
+     */
     public boolean isModCommand() {
+        return false;
+    }
+
+    /**
+     *
+     * @return true is the command is only for booster
+     */
+    public boolean isBoosterCommand() {
         return false;
     }
 
