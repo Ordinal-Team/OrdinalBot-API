@@ -14,7 +14,7 @@ Les pull request sont les bienvenues.
 
 _Versions history:_
 
-**Last release :** [Pre release: SNAPSHOT 1.0.0](https://github.com/Ordinal-Team/OrdinalBot-API/releases/tag/v0.0.1)
+**Last release :** [Pre release: SNAPSHOT 0.0.2](https://github.com/Ordinal-Team/OrdinalBot-API/releases/tag/v0.0.2)
 
 **Stable release :** nothing
 
