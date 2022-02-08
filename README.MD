@@ -12,10 +12,11 @@ Les pull request sont les bienvenues.
 
 ## Version
 
-#### last release: 
-    todo
-#### stable release:
-    todo
+_Versions history:_
+
+**Last release :** [Pre release: SNAPSHOT 1.0.0](https://github.com/Ordinal-Team/OrdinalBot-API/releases/tag/v0.0.1)
+
+**Stable release :** nothing
 
 ## implementation:
 
