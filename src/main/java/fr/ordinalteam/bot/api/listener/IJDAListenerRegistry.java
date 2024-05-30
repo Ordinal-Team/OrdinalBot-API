@@ -1,12 +1,8 @@
-package fr.ordinalteam.bot.api.bots;
+package fr.ordinalteam.bot.api.listener;
 
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-/**
- * Create by Arinonia 18/06/2021
- */
-public interface IJDAListenerManager {
-
+public interface IJDAListenerRegistry {
     /**
      * Register a new JDA listener in the bot (like onGuildMemberJoin)
      * @param listenerAdapter Listener you want to register

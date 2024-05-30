@@ -1,78 +1,58 @@
 package fr.ordinalteam.bot.api.plugin;
 
-import fr.ordinalteam.bot.api.Ordinal;
-import fr.ordinalteam.bot.api.bots.IJDAListenerManager;
-import fr.ordinalteam.bot.api.commands.ICommandRegistry;
-import fr.ordinalteam.bot.api.utils.Logger;
+import fr.ordinalteam.bot.api.OrdinalBot;
+import fr.ordinalteam.bot.api.config.PluginConfig;
 
-import javax.annotation.Nullable;
 import java.io.File;
 
-/**
- * Create by Arinonia 18/06/2021
- */
 public abstract class Plugin {
 
-    private final Ordinal ordinal;
+    private final OrdinalBot ordinalBot;
+    private PluginConfig defaultConfig;
     private PluginDescriptor pluginDescriptor;
-    public final Logger logger = new Logger();
 
     public Plugin() {
-        this.ordinal = Ordinal.getOrdinal();
+        this.ordinalBot = OrdinalBot.getInstance();
     }
 
-    /**
-     * Methode call when your plugin is load by OrdinalBot
-     */
-    public void onEnable(){}
+    public void onEnable() {}
 
-    public Ordinal getOrdinal() {
-        return this.ordinal;
+
+    public void onDisable() {}
+
+    public File getPluginFolder() {
+        if (this.pluginDescriptor == null) {
+            throw new IllegalStateException("PluginDescriptor is not set");
+        }
+        final File file = new File("plugins", pluginDescriptor.name());
+        if (!file.exists()) {
+            if (!file.mkdirs()) {
+                System.err.println("Failed to create plugin folder: " + file.getAbsolutePath());
+            }
+        }
+        return file;
     }
 
-    /**
-     * @return the command registry where you can register / unregister your command
-     */
-    public ICommandRegistry getCommandRegistry() {
-        return this.ordinal.getCommandRegistry();
+    public PluginConfig getDefaultConfig() {
+        if (this.defaultConfig == null) {
+            this.defaultConfig = new PluginConfig(new File(getPluginFolder(), "config.json"));
+        }
+        return this.defaultConfig;
     }
 
-    /**
-     *
-     * @return the JDAListener where you can register / unregister your listener
-     */
-    public IJDAListenerManager getJDAListenerManager() {
-        return this.ordinal.getJDAListenerManager();
+    public OrdinalBot getOrdinalBot() {
+        return this.ordinalBot;
     }
 
-    /**
-     *
-     * @return PluginDescriptor (can be null careful)
-     */
-    @Nullable
     public PluginDescriptor getPluginDescriptor() {
         return this.pluginDescriptor;
     }
 
-    /**
-     * only for implementation of api, don't use it.
-     * @param pluginDescriptor the pluginDescriptor
-     */
     public void setPluginDescriptor(final PluginDescriptor pluginDescriptor) {
         this.pluginDescriptor = pluginDescriptor;
-    }
+        //! Need to be sure that pluginDescriptor is not null
+        final File pluginFolder = getPluginFolder();
+        this.defaultConfig = new PluginConfig(new File(pluginFolder, "config.json"));
 
-    /**
-     *
-     * @return your plugin folder, where you can put your config or i don't know what
-     */
-    public File getPluginFolder() {
-        final File file = new File("plugins", pluginDescriptor.getName());
-        if (!file.exists()) {
-            if (!file.mkdirs()) {
-                this.logger.logError("cannot create plugin folder");
-            }
-        }
-        return file;
     }
 }
