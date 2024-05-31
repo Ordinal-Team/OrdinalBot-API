@@ -24,15 +24,22 @@ public abstract class Plugin {
         if (this.pluginDescriptor == null) {
             throw new IllegalStateException("PluginDescriptor is not set");
         }
+        return new File("plugins", this.pluginDescriptor.name());
+    }
+
+    private boolean createPluginFolder() {
+        if (this.pluginDescriptor == null) {
+            throw new IllegalStateException("PluginDescriptor is not set");
+        }
         final File file = new File("plugins", pluginDescriptor.name());
         if (!file.exists()) {
             if (!file.mkdirs()) {
                 System.err.println("Failed to create plugin folder: " + file.getAbsolutePath());
+                return false;
             }
         }
-        return file;
+        return true;
     }
-
     public PluginConfig getDefaultConfig() {
         if (this.defaultConfig == null) {
             this.defaultConfig = new PluginConfig(new File(getPluginFolder(), "config.json"));
@@ -50,9 +57,8 @@ public abstract class Plugin {
 
     public void setPluginDescriptor(final PluginDescriptor pluginDescriptor) {
         this.pluginDescriptor = pluginDescriptor;
-        //! Need to be sure that pluginDescriptor is not null
-        final File pluginFolder = getPluginFolder();
-        this.defaultConfig = new PluginConfig(new File(pluginFolder, "config.json"));
-
+        if (!createPluginFolder()) {
+            System.err.println("Failed to create plugin folder: " + pluginDescriptor.name());
+        }
     }
 }

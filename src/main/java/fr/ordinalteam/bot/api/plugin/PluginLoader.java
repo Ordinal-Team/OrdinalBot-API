@@ -25,7 +25,7 @@ public class PluginLoader {
     private final Map<Plugin, URLClassLoader> pluginClassLoaders = new HashMap<>();
     private final File pluginFolder = new File("plugins");
 
-    public void init() {
+    public void start() {
         if (!this.pluginFolder.exists()) {
             if (this.pluginFolder.mkdir()) {
                 System.out.println("Created folder " + this.pluginFolder.getName());
@@ -33,9 +33,6 @@ public class PluginLoader {
                 System.err.println("Cannot create folder " + this.pluginFolder.getName());
             }
         }
-    }
-
-    public void start() {
         loadAllPlugins();
     }
 
@@ -75,7 +72,6 @@ public class PluginLoader {
                 System.err.println("Skipping JAR: " + file.getName() + " (missing plugin.json)");
                 return;
             }
-
             final PluginDescriptor pluginDescriptor = createPluginDescriptor(json);
             classLoader = createClassLoader(file);
             final Class<? extends Plugin> pluginClass = loadPluginClass(classLoader, pluginDescriptor, file);
@@ -152,6 +148,7 @@ public class PluginLoader {
     private void copyDefaultConfig(final JarFile jarFile, final File configFile) throws InvalidPluginException {
         final JarEntry configEntry = jarFile.getJarEntry("config.json");
         if (configEntry == null) {
+            //! Need to be change
             throw new InvalidPluginException("Default config.json not found in JAR");
         }
         try (final InputStream input = jarFile.getInputStream(configEntry)) {
@@ -159,7 +156,6 @@ public class PluginLoader {
         } catch (IOException e) {
             throw new InvalidPluginException("Failed to copy default config.json", e);
         }
-        System.out.println("Default config.json copied to " + configFile.getName());
     }
 
     private void addPlugin(final Plugin plugin, final URLClassLoader classLoader) {
