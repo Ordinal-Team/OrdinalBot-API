@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class PluginConfig {
 
+    //! TO FIX: object are not working for now
     private final File configFile;
     private final Gson gson;
     private JsonObject configData;
