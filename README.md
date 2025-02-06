@@ -35,29 +35,6 @@ dependencies {
 }
 ```
 
-#### Maven
-Add the following to your `pom.xml`:
-```xml
-<repositories>
-    <repository>
-        <id>libs-release</id>
-        <url>file://${project.basedir}/libs</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-    </repository>
-</repositories>
-
-<dependencies>
-    <dependency>
-        <groupId>com.ordinalteam</groupId>
-        <artifactId>OrdinalBot-API</artifactId>
-        <version>0.1.0</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/libs/OrdinalBot-API-0.1.0.jar</systemPath>
-    </dependency>
-</dependencies>
-```
 
 ### Usage
 Create a `plugin.json` in your resources directory:
